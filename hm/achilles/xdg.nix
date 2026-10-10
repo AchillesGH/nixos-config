@@ -2,7 +2,7 @@
 {config, ...}: let
   defaultApps = {
     imv = "org.gnome.Loupe.desktop";
-    browser = "zen-twilight.desktop";
+    browser = "zen-beta.desktop";
     fileMan = "nemo.desktop";
     pdfReader = "chromium-desktop.desktop"; # for sandboxing
   };

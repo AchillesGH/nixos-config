@@ -7,7 +7,7 @@
   home.username = "achilles";
   home.homeDirectory = "/home/achilles";
   imports = [
-    inputs.zen-browser.homeModules.twilight-official
+    inputs.zen-browser.homeModules.beta
     inputs.stylix.homeModules.stylix
     ./hyprland
     ./waybar
@@ -111,7 +111,6 @@
   programs.zen-browser = {
     enable = true;
     # setAsDefaultBrowser = true;
-    package = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight-official;
   };
 
   programs.eza = {
