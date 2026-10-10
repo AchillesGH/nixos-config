@@ -76,6 +76,7 @@
       fuse
       unzip
       gh
+      dosbox
     ];
   };
 
