@@ -55,7 +55,7 @@
     gyre-fonts
 
     # TTF
-    ttf_bitstream_vera
+    ttf-bitstream-vera
     caladea
     carlito
     libertine
