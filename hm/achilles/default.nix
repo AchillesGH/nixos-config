@@ -240,4 +240,6 @@
     enable = true;
     pinentry.package = pkgs.pinentry-qt;
   };
+
+  services.kdeconnect.enable = true;
 }
