@@ -6,12 +6,30 @@ hl.monitor({
 })
 
 local terminal = "kitty"
+local floating_term_args = "--app-id floatingkitty"
+local floating_term = terminal .. " " .. floating_term_args -- made for potentially different terminal for floating and scratchpad workspaces for future.
+
 local fileManager = "nemo"
 local menu = "rofi -sort -show drun"
 local lock_screen = "hyprlock"
 local clipboard = "rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons"
 local colorPicker = "hyprpicker -a -n -r"
 local emojiPicker = "rofimoji"
+local grimblast_flags = "-f -n"
+local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+
+local function bindM(keys, dsp, opts)
+    hl.bind("SUPER + " .. keys, dsp, opts)
+end
+local function bindMS(keys, dsp, opts)
+    bindM("SHIFT + " .. keys, dsp, opts)
+end
+local function bindMe(keys, cmd, opts)
+    bindM(keys, hl.dsp.exec_cmd(cmd), opts)
+end
+local function bindMSe(keys, cmd, opts)
+    bindMe("SHIFT + " .. keys, cmd, opts)
+end
 
 hl.config({
     general = {
@@ -128,22 +146,6 @@ hl.device({
     name = "epic-mouse-v1",
     sensitivity = -0.5,
 })
-
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-
-local function bindM(keys, dsp, opts)
-    hl.bind("SUPER + " .. keys, dsp, opts)
-end
-local function bindMS(keys, dsp, opts)
-    bindM("SHIFT + " .. keys, dsp, opts)
-end
-local function bindMe(keys, cmd, opts)
-    bindM(keys, hl.dsp.exec_cmd(cmd), opts)
-end
-local function bindMSe(keys, cmd, opts)
-    bindMe("SHIFT + " .. keys, cmd, opts)
-end
-
 bindMe("Q", terminal)
 bindMe("E", fileManager)
 bindMe("SPACE", menu)
@@ -172,11 +174,20 @@ for i = 1, 10 do
     bindMS(key, hl.dsp.window.move({ workspace = i }))
 end
 
+bindMSe("Q", floating_term)
+bindM("S", hl.dsp.workspace.toggle_special("scratchterm"))
+bindMS("S", hl.dsp.window.move({ workspace = "special:scratchterm" }))
+-- silently open kitty in special workspace (scratchterm) on  hyprland boot.
+hl.on("hyprland.start", function()
+    hl.exec_cmd(floating_term, { workspace = "special:scratchterm silent" })
+end)
+
 bindMe("Escape", "pidof nwg-bar || nwg-bar")
 
 -- Screenshotting
-hl.bind("Print", hl.dsp.exec_cmd("grimblast copysave area -f -n"))
-bindMe("Print", "grimblast copysave output -f -n")
+hl.bind("Print", hl.dsp.exec_cmd("grimblast copysave area " .. grimblast_flags))
+bindMe("Print", "grimblast copysave output " .. grimblast_flags)
+bindMSe("Print", "grimblast copysave active " .. grimblast_flags)
 
 hl.bind(mainMod .. " + T", hl.dsp.workspace.toggle_special("term"))
 
@@ -219,6 +230,13 @@ local suppressMaximizeRule = hl.window_rule({
     name = "suppress-maximize-events",
     match = { class = ".*" },
     suppress_event = "maximize",
+})
+
+hl.window_rule({
+    match = { class = "floatingkitty" },
+    float = true,
+    size = { "monitor_w * 0.75", "monitor_h * 0.7" },
+    center = true,
 })
 
 hl.window_rule({
