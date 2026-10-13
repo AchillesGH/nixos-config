@@ -1,12 +1,8 @@
 {pkgs, ...}: {
-  xdg.autostart.entries = [
-    "${pkgs.proton-vpn}/share/applications/proton.vpn.app.gtk.desktop"
-  ];
-
   xdg.configFile = {
     "Proton/VPN/settings.json".text = builtins.toJSON {
       protocol = "wireguard";
-      killswitch = 2;
+      killswitch = 1;
       custom_dns = {
         enabled = false;
         ip_list = [
@@ -49,7 +45,7 @@
         "US"
       ];
       connect_at_app_startup = "FASTEST";
-      start_app_minimized = true; # required since autostart entry does not have `--start-minimized`
+      start_app_minimized = false;
     };
   };
 }
