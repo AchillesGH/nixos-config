@@ -91,18 +91,12 @@ in {
     options = dbMountOptions;
   };
 
-  boot.resumeDevice = "/dev/disk/by-label/swap";
   swapDevices = [
     {
-      device = "/dev/disk/by-label/swap";
+      device = "/dev/disk/by-partlabel/lx_swap";
       options = [
-        "nofail"
       ];
-      encrypted = {
-        enable = true;
-        label = "swap";
-        blkDev = "/dev/disk/by-label/luks_swap";
-      };
+      randomEncryption.enable = true;
     }
   ];
 
