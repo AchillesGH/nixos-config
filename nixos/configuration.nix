@@ -107,4 +107,6 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/confman/system";
   };
+
+  hardware.block.scheduler."nvme[0-9]*" = "kyber";
 }
