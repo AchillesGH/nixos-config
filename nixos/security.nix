@@ -15,6 +15,9 @@
     };
   };
 
+  services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = false;
+
   boot.kernelParams = [
     "slab_nomerge"
     "page_poison=1"
@@ -77,7 +80,6 @@
 
   boot.kernel.sysctl = {
     "kernel.kptr_restrict" = 2;
-    "kernel.ftrace_enabled" = false;
     "kernel.sysrq" = 0;
     "kernel.io_uring_disabled" = 2;
     "kernel.yama.ptrace_scope" = 2;
@@ -227,10 +229,11 @@
       "gid=${toString config.users.groups.wheel.gid}"
     ];
   };
-
+  /*
   services.usbguard = {
     enable = true;
     dbus.enable = true;
     IPCAllowedGroups = ["wheel"];
   };
+  */
 }
