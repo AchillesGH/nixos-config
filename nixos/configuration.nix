@@ -5,7 +5,6 @@
     ./fs.nix
     ./time.nix
     ./intel.nix
-    ./nvidia.nix
     ./power.nix
     ./security.nix
     ./network.nix
