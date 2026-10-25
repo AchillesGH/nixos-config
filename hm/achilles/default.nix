@@ -81,11 +81,6 @@
   };
 
   programs.obs-studio.enable = true;
-  programs.obs-studio.package = (
-    pkgs.obs-studio.override {
-      cudaSupport = true;
-    }
-  );
   programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [
     wlrobs
     obs-backgroundremoval
@@ -93,18 +88,6 @@
     obs-gstreamer
     obs-vkcapture
   ];
-
-  services.pipewire.enable = true;
-  services.pipewire.pulseConfigs = {
-    "pulse-server" = {
-      "pulse.properties" = {
-        "server.address" = [
-          "unix:native"
-          "tcp:127.0.0.1:4713"
-        ];
-      };
-    };
-  };
 
   programs.yt-dlp.enable = true;
   programs.direnv.enable = true;
@@ -190,6 +173,12 @@
   stylix.targets.qt.enable = true;
   stylix.image = ./neon_shallows.png;
   stylix.fonts = {
+    sizes = {
+      desktop = 12;
+      applications = 14;
+      popups = 12;
+      terminal = 13;
+    };
     serif = {
       name = "serif";
     };
