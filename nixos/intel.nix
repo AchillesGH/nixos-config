@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   services.xserver.videoDrivers = ["modesetting"];
   boot.kernelParams = [
-    "i915.enable_guc=3"
-    "i915.enable_psr=0"
+    "i915.force_probe=!b0a0"
+    "xe.force_probe=b0a0"
   ];
   # boot.initrd.kernelModules = [ "xe" ];
 
