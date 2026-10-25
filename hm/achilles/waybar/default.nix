@@ -196,7 +196,7 @@ _: {
           format = "󰤮 Off";
           format-disconnected = "󰤫 D/C";
           format-ethernet = " {ifname}: {ipaddr}/{cidr}";
-          interface = "wlan0";
+          interface = "wlp*";
           format-icons = [
             "󰤯"
             "󰤟"
