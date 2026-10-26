@@ -7,9 +7,10 @@
   security.forcePageTableIsolation = true;
   security.pam.services.su.requireWheel = true;
 
-  services.fprintd.enable = true;
-
-  security.pam.services.login.fprintAuth = false;
+  services.fprintd = {
+    enable = true;
+    enablePam = false;
+  };
 
   boot.kernelParams = [
     "slab_nomerge"
