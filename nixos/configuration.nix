@@ -83,6 +83,15 @@
 
   system.stateVersion = "26.11";
 
+  # https://wiki.archlinux.org/title/Fprint#Sleeping_while_fprintd_is_still_running_breaks_fprintd
+  systemd.services.kill-fprintd = {
+    description = "Kill fprintd before sleep";
+    before = ["sleep.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.psmisc}/bin/killall fprintd";
+    };
+    wantedBy = ["sleep.target"];
+  };
   console.earlySetup = true;
   services.kmscon = {
     config = {
