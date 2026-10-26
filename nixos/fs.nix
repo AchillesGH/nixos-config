@@ -28,7 +28,7 @@
 in {
   environment.etc."crypttab" = {
     text = ''
-      data /dev/disk/by-uuid/4e99b9ec-e2b9-457f-9fc4-521d36468470 /root/data.key tpm2-device=auto,discard
+      data /dev/disk/by-partlabel/data_part /root/data.key tpm2-device=auto,discard
     '';
   };
   fileSystems."/home".options = [
@@ -90,16 +90,16 @@ in {
     fsType = "fuse.bindfs";
     options = dbMountOptions;
   };
-  /*
+  
   swapDevices = [
     {
-      device = "/dev/disk/by-partlabel/lx_swap";
+      device = "/dev/disk/by-partlabel/swap_part";
       options = [
       ];
       randomEncryption.enable = true;
     }
   ];
-  */
+  
   services.udisks2.enable = true;
   services.gvfs.enable = true;
 }
