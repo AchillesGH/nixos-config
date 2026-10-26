@@ -23,13 +23,7 @@
     options = ["subvol=root"];
   };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/95c077d9-313c-4242-b9a9-19abd9ab9033";
-
-  fileSystems."/nix" = {
-    device = "/dev/mapper/cryptroot";
-    fsType = "btrfs";
-    options = ["subvol=nix"];
-  };
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/683462a9-aee6-42be-8dba-0299ca9e65ff";
 
   fileSystems."/home" = {
     device = "/dev/mapper/cryptroot";
@@ -37,8 +31,14 @@
     options = ["subvol=home"];
   };
 
+  fileSystems."/nix" = {
+    device = "/dev/mapper/cryptroot";
+    fsType = "btrfs";
+    options = ["subvol=nix"];
+  };
+
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/4E21-CDF1";
+    device = "/dev/disk/by-uuid/8972-89D9";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };
