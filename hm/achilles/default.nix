@@ -124,10 +124,7 @@
     };
   };
 
-  programs.keepassxc = {
-    autostart = true;
-    enable = true;
-  };
+  services.gnome-keyring.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
