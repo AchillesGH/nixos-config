@@ -38,7 +38,6 @@
     gcr_3
     ghostscript
     grimblast
-    hyprlock
     hyprpicker
     imagemagick
     impala

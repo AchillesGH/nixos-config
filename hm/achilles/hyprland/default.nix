@@ -8,6 +8,38 @@
     ./hypridle.nix
   ];
   services.hyprpolkitagent.enable = true;
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      auth = {
+        fingerprint = {
+          enabled = true;
+        };
+      };
+      label = [
+        {
+          monitor = "";
+          text = "$TIME";
+          color = "rgba(200, 200, 200, 1.0)";
+          font_size = 64;
+          position = "0, 100";
+          halign = "center";
+          valign = "center";
+        }
+
+        {
+          monitor = "";
+          text = "$FPRINTPROMPT";
+          color = "rgba(200, 200, 200, 1.0)";
+          font_size = 24;
+          position = "0, 0";
+          halign = "center";
+          valign = "top";
+        }
+      ];
+    };
+  };
+
   services.cliphist = {
     enable = true;
 
