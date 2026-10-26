@@ -6,16 +6,9 @@
 }: {
   security.forcePageTableIsolation = true;
   security.pam.services.su.requireWheel = true;
-  security.pam.services.hyprlock = {
-    googleAuthenticator.enable = true;
-    rules.auth.google_authenticator = {
-      control = lib.mkForce "sufficient";
-      order = config.security.pam.services.hyprlock.rules.auth.unix.order + 10;
-      args = ["try_first_pass"];
-    };
-  };
 
   services.fprintd.enable = true;
+
   security.pam.services.login.fprintAuth = false;
 
   boot.kernelParams = [
