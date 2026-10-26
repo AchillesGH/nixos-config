@@ -109,7 +109,7 @@
     name = "rose-pine-hyprcursor";
     hyprcursor.enable = true;
     x11.enable = true;
-    size = 24;
+    size = 28;
   };
   dconf = {
     settings = {
