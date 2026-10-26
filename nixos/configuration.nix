@@ -25,6 +25,7 @@
     useTmpfs = true;
     secrets = {
       main_user_pwd_hash = {};
+      nextdns = {};
     };
   };
 
