@@ -46,9 +46,5 @@
 
   boot.kernelParams = [
     "mem_sleep_default=s2idle"
-    "nvme_core.default_ps_max_latency_us=0"
-
-    "mt7925e.disable_aspm=1" # Disables aggressive power management sleep loops
-    "swiotlb=65535" # Expands the bounce buffer size for I/O memory allocation
   ];
 }
