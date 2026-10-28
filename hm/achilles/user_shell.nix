@@ -117,11 +117,6 @@
           keyColor = "yellow";
         }
         {
-          type = "packages";
-          key = "  ├󰏖";
-          keyColor = "yellow";
-        }
-        {
           type = "shell";
           key = "  └";
           keyColor = "yellow";
