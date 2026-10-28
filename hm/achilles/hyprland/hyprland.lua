@@ -177,7 +177,7 @@ for i = 1, 10 do
 end
 
 bindMSe("Q", floating_term)
-bindM("S", hl.dsp.workspace.toggle_special("scratchterm"))
+bindMS("F23", hl.dsp.workspace.toggle_special("scratchterm")) -- mod + shift + f23 = copilot key
 bindMS("S", hl.dsp.window.move({ workspace = "special:scratchterm" }))
 -- silently open kitty in special workspace (scratchterm) on  hyprland boot.
 hl.on("hyprland.start", function()
