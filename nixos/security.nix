@@ -4,7 +4,6 @@
   config,
   ...
 }: {
-  security.forcePageTableIsolation = true;
   security.pam.services.su.requireWheel = true;
 
   services.fprintd = {
@@ -12,9 +11,16 @@
     enablePam = false;
   };
 
+  services.howdy.enable = true;
+  security.pam.howdy.enable = false; # force disable howdy by default for all PAM configurations
+  security.pam.services.hyprlock.howdy = {
+    enable = true;
+    control = "sufficient";
+  };
+
   boot.kernelParams = [
     "slab_nomerge"
-    "page_poison=1"
+    "init_on_free=1"
     "page_alloc.shuffle=1"
     "debugfs=off"
   ];
@@ -223,11 +229,12 @@
       "gid=${toString config.users.groups.wheel.gid}"
     ];
   };
-  /*
-  services.usbguard = {
-    enable = true;
-    dbus.enable = true;
-    IPCAllowedGroups = ["wheel"];
-  };
-  */
+
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+        if (subject.user === "${config.users.users.prisoner.name}") {
+            return polkit.Result.NO;
+        }
+    });
+  '';
 }
