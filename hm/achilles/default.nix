@@ -171,7 +171,7 @@
   stylix.fonts = {
     sizes = {
       desktop = 12;
-      applications = 14;
+      applications = 15;
       popups = 12;
       terminal = 13;
     };
