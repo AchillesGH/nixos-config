@@ -86,9 +86,6 @@
     xwayland.enable = true;
     systemd.enable = false;
     extraConfig = ''
-      hl.on("hyprland.start", function ()
-        hl.exec_cmd("${lib.getExe pkgs.hyprlock}")
-      end)
       ${builtins.readFile ./hyprland.lua}
       hl.permission({ binary = "${lib.getExe pkgs.grim}", type = "screencopy", mode = "allow" })
       hl.permission({ binary = "${lib.getExe pkgs.hyprpicker}", type = "screencopy", mode = "allow" })

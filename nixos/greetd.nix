@@ -9,12 +9,10 @@
     useTextGreeter = true;
     greeterManagesPlymouth = true;
 
-    settings = rec {
-      default_session.command = with pkgs; "${lib.getExe tuigreet} --time --user-menu --remember --remember-session";
-
-      initial_session = {
-        command = "uwsm start hyprland-uwsm.desktop";
-        user = "achilles";
+    settings = {
+      default_session = {
+        user = "greeter";
+        command = with pkgs; "${lib.getExe tuigreet} --time --user-menu --remember --remember-session";
       };
     };
   };
