@@ -87,7 +87,7 @@
   console.earlySetup = true;
   services.kmscon = {
     config = {
-      font-size = 16;
+      font-size = 22;
       hwaccel = true;
       font-name = "Maple Mono";
     };
