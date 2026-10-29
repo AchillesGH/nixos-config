@@ -17,6 +17,10 @@
     enable = true;
     control = "sufficient";
   };
+  security.pam.services.login.howdy = {
+    enable = true;
+    control = "sufficient";
+  };
 
   boot.kernelParams = [
     "slab_nomerge"
