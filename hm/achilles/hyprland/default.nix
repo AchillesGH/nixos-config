@@ -89,9 +89,8 @@
       ${builtins.readFile ./hyprland.lua}
       hl.permission({ binary = "${lib.getExe pkgs.grim}", type = "screencopy", mode = "allow" })
       hl.permission({ binary = "${lib.getExe pkgs.hyprpicker}", type = "screencopy", mode = "allow" })
-      hl.permission({ binary = "${lib.getExe pkgs.grimblast}", type = "screencopy", mode = "allow" })
-      hl.permission({ binary = "${lib.getExe config.programs.hyprlock.package}", type = "screencopy", mode = "allow" })
-      hl.permission({ binary = "${config.wayland.windowManager.hyprland.finalPortalPackage}/libexec/.xdg-desktop-portal-hyprland-wrapped", type = "screencopy", mode = "allow" })
+      hl.permission({ binary = [[${lib.escapeRegex (lib.getExe config.programs.hyprlock.package)}]], type = "screencopy", mode = "allow" })
+      hl.permission({ binary = [[${pkgs.xdg-desktop-portal-hyprland}/libexec/\.xdg-desktop-portal-hyprland-wrapped]], type = "screencopy", mode = "allow" })
     '';
   };
 
