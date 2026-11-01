@@ -47,10 +47,27 @@
     restartUnits = ["systemd-resolved.service"];
     mode = "0444";
   };
-
-  networking.firewall = rec {
+  networking.firewall.enable = false;
+  networking.nftables.enable = true;
+  services.firewalld = {
     enable = true;
-    allowedTCPPortRanges = lib.mkForce [];
-    allowedUDPPortRanges = lib.mkForce [];
+    settings.DefaultZone = "drop"; # drop all traffic by default. NetworkManager sets zones.
+
+    zones = {
+      home.services = ["kdeconnect" "mdns"];
+    };
+  };
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = false; # Handled per-zone in firewalld under mdns service rules.
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
   };
 }
