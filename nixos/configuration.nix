@@ -94,7 +94,8 @@
     extraOptions = "--term xterm-256color";
   };
   services.scx = {
-    scheduler = "scx_bpfland";
+    scheduler = "scx_lavd";
+    extraArgs = ["--autopower"];
   };
 
   programs.bat.extraPackages = with pkgs.bat-extras; [
@@ -106,6 +107,12 @@
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/confman/system";
+  };
+
+  programs.steam = {
+    extraPackages = with pkgs; [
+      gamescope
+    ];
   };
 
   hardware.block.scheduler."nvme[0-9]*" = "kyber";
