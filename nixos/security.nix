@@ -31,6 +31,7 @@
     "fb_tunnels=none"
   ];
   boot.kexec.enable = false;
+  security.protectKernelImage = true;
   #  environment.memoryAllocator.provider = "graphene-hardened-light";
 
   boot.blacklistedKernelModules = [
