@@ -204,10 +204,10 @@ _: {
             "󰤥"
             "󰤨"
           ];
-          format-wifi = "{icon} {bandwidthDownBytes}";
+          format-wifi = "{icon} {bandwidthDownBits}";
           interval = 1;
           on-click = "pkill iwgtk; iwgtk";
-          tooltip-format = "{essid} ({frequency} MHz) {signalStrength}%\n⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}";
+          tooltip-format = "{essid} ({frequency} MHz) {signalStrength}%\n⇣{bandwidthDownBits} ⇡{bandwidthUpBites}";
         };
         privacy = {
           icon-size = 18;
