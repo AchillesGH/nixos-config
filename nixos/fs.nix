@@ -67,6 +67,8 @@ in {
     "noexec"
     "nosuid"
     "nodev"
+    "fmask=0077"
+    "dmask=0077"
   ];
 
   # Fix/workaround for distrobox access to host themes from wiki
