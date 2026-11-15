@@ -30,22 +30,8 @@
 
   services.resolved.enable = true;
   services.resolved.settings.Resolve = {
-    DNSSEC = "yes";
-    DNSOverTLS = "yes";
     LLMNR = false;
     MulticastDNS = false;
-  };
-  sops.templates.resolved = {
-    content = ''
-      [Resolve]
-      DNS=45.90.28.0#${config.sops.placeholder.nextdns}.dns.nextdns.io
-      DNS=2a07:a8c0::#${config.sops.placeholder.nextdns}.dns.nextdns.io
-      DNS=45.90.30.0#${config.sops.placeholder.nextdns}.dns.nextdns.io
-      DNS=2a07:a8c1::#${config.sops.placeholder.nextdns}.dns.nextdns.io
-    '';
-    path = "/etc/systemd/resolved.conf.d/dns.conf";
-    restartUnits = ["systemd-resolved.service"];
-    mode = "0444";
   };
   networking.firewall.enable = false;
   networking.nftables.enable = true;
