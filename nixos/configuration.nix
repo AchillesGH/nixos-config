@@ -49,7 +49,7 @@
   systemd.oomd.enable = true;
   services.fwupd.enable = true;
   services.kmscon.enable = true;
-  services.scx.enable = true;
+  services.scx-loader.enable = true;
 
   programs.bat.enable = true;
   programs.fish.enable = true;
@@ -93,9 +93,13 @@
     };
     extraOptions = "--term xterm-256color";
   };
-  services.scx = {
-    scheduler = "scx_lavd";
-    extraArgs = ["--autopower"];
+  services.scx-loader = {
+    config = {
+      default_sched = "scx_lavd";
+      "scheds.scx_lavd" = {
+        auto_mode = ["--autopower"];
+      };
+    };
   };
 
   programs.bat.extraPackages = with pkgs.bat-extras; [
