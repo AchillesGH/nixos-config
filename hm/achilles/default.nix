@@ -129,7 +129,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.chromium.enable = true;
-  programs.brave.enable = true;
+  programs.brave-origin.enable = true;
 
   programs.kitty = {
     enable = true;
