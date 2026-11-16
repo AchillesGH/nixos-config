@@ -44,6 +44,7 @@
     };
   };
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
 
   systemd.oomd.enable = true;
   services.fwupd.enable = true;
