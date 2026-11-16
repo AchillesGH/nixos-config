@@ -78,7 +78,6 @@
     "vivid"
 
     "firewire-core" # Blocks FireWire DMA attacks
-    "thunderbolt"
   ];
 
   boot.extraModprobeConfig = builtins.concatStringsSep "\n" (
