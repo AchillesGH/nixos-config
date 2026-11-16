@@ -31,15 +31,6 @@ in {
       data /dev/disk/by-partlabel/data_part /root/data.key tpm2-device=auto,discard
     '';
   };
-  fileSystems."/home".options = [
-    "compress=zstd:3"
-  ];
-  fileSystems."/nix".options =
-    [
-      "compress=zstd:3"
-    ]
-    ++ standardOpts;
-
   fileSystems."/mnt/data" = {
     device = "/dev/mapper/data";
     fsType = "btrfs";
