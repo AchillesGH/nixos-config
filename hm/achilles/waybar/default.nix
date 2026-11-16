@@ -163,7 +163,7 @@ _: {
           };
         };
         memory = {
-          format = " {used}G";
+          format = " {used:0.2f}G";
           tooltip-format = "{used}GiB RAM\n{swapUsed}GiB Swap";
           interval = 5;
         };
