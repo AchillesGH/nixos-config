@@ -33,7 +33,7 @@
     homeMode = "750";
     packages = with pkgs; [kitty];
     linger = true;
-    hashedPassword = "$6$qtRqjATfokiJZ3J2$vNkJylh3LcbUifYaaGUEr0AO953c7FXUUO3L7eYBo3UpcRMnTSbGOW1OOrzP96ta02Uu3qsQ90kktvU64E6G2.";
+    hashedPassword = "$6$ORRkMoElXRYP5NWR$eYIGfLV1erneqr84ME4i1Im2tL0wPrPvlIpWqA1oLc542zF9i2rx6rP1RR4VZAVR8zs0F26lnWPg8ScBEJnMl.";
   };
 
   environment.etc."security/access.conf".text = ''
