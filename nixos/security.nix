@@ -21,6 +21,7 @@
     enable = true;
     control = "sufficient";
   };
+  security.pam.services.doas.fprintAuth = true;
 
   boot.kernelParams = [
     "slab_nomerge"
