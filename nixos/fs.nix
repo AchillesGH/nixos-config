@@ -5,10 +5,9 @@
 }: let
   standardOpts = [
     "rw"
-    "space_cache=v2"
     "noatime"
-    "ssd"
-    "discard=async"
+    "logbsize=256k"
+    "logbufs=8"
   ];
   dbMountOptions = [
     "ro"
@@ -28,17 +27,21 @@
 in {
   environment.etc."crypttab" = {
     text = ''
-      data /dev/disk/by-partlabel/data_part /root/data.key tpm2-device=auto,discard
+      data /dev/disk/by-partlabel/data_part /root/data.key discard,no-read-workqueue,no-write-workqueue
     '';
   };
+  boot.initrd.luks.devices."cryptroot" = {
+    allowDiscards = true;
+    bypassWorkqueues = true;
+  };
+  fileSystems."/".options = standardOpts;
   fileSystems."/mnt/data" = {
     device = "/dev/mapper/data";
-    fsType = "btrfs";
+    fsType = "xfs";
     options =
       [
         "nosuid"
         "nodev"
-        "compress=zstd:3"
       ]
       ++ standardOpts;
   };
@@ -86,4 +89,5 @@ in {
 
   services.udisks2.enable = true;
   services.gvfs.enable = true;
+  services.fstrim.enable = true;
 }
