@@ -84,15 +84,6 @@ in {
     options = dbMountOptions;
   };
 
-  swapDevices = [
-    {
-      device = "/dev/disk/by-partlabel/swap_part";
-      options = [
-      ];
-      randomEncryption.enable = true;
-    }
-  ];
-
   services.udisks2.enable = true;
   services.gvfs.enable = true;
 }
