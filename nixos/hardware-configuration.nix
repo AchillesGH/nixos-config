@@ -21,7 +21,7 @@
     fsType = "xfs";
   };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/ef41b103-4864-4e84-8559-c1a49b02f5b2";
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/e9093f12-0ce7-48aa-be46-a8c3b9323e68";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/12CE-A600";
