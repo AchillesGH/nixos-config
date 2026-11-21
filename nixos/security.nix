@@ -158,21 +158,18 @@
       users = ["confman"];
       cmd = "sysrbt-cmd";
       keepEnv = false;
-      noPass = true;
     }
 
     {
       users = ["confman"];
       cmd = "sysrbb-cmd";
       keepEnv = false;
-      noPass = true;
     }
 
     {
       users = ["confman"];
       cmd = "sysrbs-cmd";
       keepEnv = false;
-      noPass = true;
     }
 
     {
