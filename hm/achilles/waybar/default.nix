@@ -207,7 +207,7 @@ _: {
           format-wifi = "{icon} {bandwidthDownBits}";
           interval = 1;
           on-click = "pkill iwgtk; iwgtk";
-          tooltip-format = "{essid} ({frequency} MHz) {signalStrength}%\n⇣{bandwidthDownBits} ⇡{bandwidthUpBites}";
+          tooltip-format = "{essid} ({frequency} MHz) {signalStrength}%\n⇣{bandwidthDownBits} ⇡{bandwidthUpBits}";
         };
         privacy = {
           icon-size = 18;
