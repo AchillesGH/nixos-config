@@ -83,6 +83,10 @@
     age
     man-pages
     man-pages-posix
+    diceware
+    zbar
+    qrencode
+    sops
   ];
   boot.kernel.sysctl = {
     "vm.swappiness" = 90;
