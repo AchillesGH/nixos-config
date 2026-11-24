@@ -187,37 +187,6 @@
       keepEnv = false;
       noPass = true;
     }
-
-    {
-      users = ["achilles"];
-      runAs = "prisoner";
-      noPass = true;
-      keepEnv = false;
-    }
-
-    {
-      users = ["achilles"];
-      noPass = true;
-      keepEnv = false;
-      cmd = "loginctl";
-      args = ["enable-linger" "${toString config.users.users.prisoner.uid}"];
-    }
-
-    {
-      users = ["achilles"];
-      noPass = true;
-      keepEnv = false;
-      cmd = "loginctl";
-      args = ["disable-linger" "${toString config.users.users.prisoner.uid}"];
-    }
-
-    {
-      users = ["achilles"];
-      noPass = true;
-      keepEnv = false;
-      cmd = "loginctl";
-      args = ["kill-user" "${toString config.users.users.prisoner.uid}"];
-    }
   ];
 
   fileSystems."/proc" = {
@@ -233,12 +202,4 @@
       "gid=${toString config.users.groups.wheel.gid}"
     ];
   };
-
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-        if (subject.user === "${config.users.users.prisoner.name}") {
-            return polkit.Result.NO;
-        }
-    });
-  '';
 }

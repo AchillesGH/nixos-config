@@ -38,7 +38,6 @@
 
   environment.etc."security/access.conf".text = ''
     - : confman : ALL
-    - : prisoner : ALL
   '';
 
   security.pam.services.login.rules.account.access = {
@@ -60,30 +59,4 @@
     args = ["accessfile=/etc/security/access.conf"];
   };
   security.pam.services.login.enableGnomeKeyring = true;
-
-  users.users.prisoner = {
-    isNormalUser = true;
-    shell = pkgs.bash;
-    hashedPassword = "!";
-    linger = false;
-    uid = 1001;
-    extraGroups = [
-    ];
-    packages = with pkgs; [
-      flatpak
-      chromium
-      steam-run
-      fuse
-      unzip
-      gh
-      dosbox
-    ];
-  };
-
-  users.groups.sharedfiles = {
-    members = [
-      "achilles"
-      "prisoner"
-    ];
-  };
 }

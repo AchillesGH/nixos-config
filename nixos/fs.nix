@@ -53,7 +53,6 @@ in {
   fileSystems."/home/achilles/Music" = mkDataBind "Music";
 
   systemd.tmpfiles.rules = [
-    "d /home/shared 0770 achilles sharedfiles - -"
     "d /mnt/data 0700 achilles users"
   ];
 
