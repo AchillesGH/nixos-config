@@ -46,8 +46,14 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.android_sdk.accept_license = true;
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+  ];
+  xdg.portal.config.common.default = "*";
   systemd.oomd.enable = true;
   services.fwupd.enable = true;
+  services.flatpak.enable = true;
   services.kmscon.enable = true;
   services.scx-loader.enable = true;
 

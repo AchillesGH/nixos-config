@@ -18,7 +18,6 @@
     shell = pkgs.fish;
     packages = with pkgs; [
       tree
-      flatpak
     ];
     home = "/home/achilles";
     hashedPasswordFile = config.sops.secrets.main_user_pwd_hash.path;
